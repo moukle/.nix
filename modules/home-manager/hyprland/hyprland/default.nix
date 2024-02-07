@@ -9,7 +9,7 @@ in {
   imports = [ 
     ./options.nix 
     ./binds.nix 
-    ./plugins.nix 
+    # ./plugins.nix 
   ];
 
   wayland.windowManager.hyprland = {

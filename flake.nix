@@ -4,27 +4,29 @@
   #outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} {imports = [./flake];};
 
   inputs = {
+    # flake-parts.url = "github:hercules-ci/flake-parts";
+    # flake-utils.url = "github:numtide/flake-utils";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nur.url = "github:nix-community/NUR";
+    # pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     anyrun.url = "github:Kirottu/anyrun";
-    #flake-parts.url = "github:hercules-ci/flake-parts";
-    #flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager";
+    hyprland-contrib.url = "github:hyprwm/contrib";
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins.url = "github:hyprwm/Hyprland-plugins";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
-    nur.url = "github:nix-community/NUR";
-    #pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
-    #flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    # flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+    # pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
+    # pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs";
     hyprland-plugins.inputs.hyprland.follows = "hyprland";
-    #pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
-    #pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nur, ... }@inputs: 
+  outputs = { self, nixpkgs, ... }@inputs: 
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};

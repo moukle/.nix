@@ -36,9 +36,9 @@
   };
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "de";
-    xkbVariant = "nodeadkeys";
+    variant = "nodeadkeys";
   };
 
   # Configure console keymap
@@ -105,7 +105,6 @@
     }
     '';
   };
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -7,9 +7,9 @@
     general = {
       gaps_in = 2;
       gaps_out = 4;
-      border_size = 8;
+      border_size = 3;
 
-      "col.active_border" = "rgb(${surface1})";
+      "col.active_border" = "rgb(${overlay2})";
       "col.inactive_border" = "rgb(${base})";
 
       resize_on_border = true;
