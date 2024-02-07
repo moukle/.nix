@@ -6,7 +6,11 @@ with lib; let
     Install.WantedBy = [ "graphical-session.target" ];
   };
 in {
-  imports = [ ./options.nix ./binds.nix ];
+  imports = [ 
+    ./options.nix 
+    ./binds.nix 
+    ./plugins.nix 
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;

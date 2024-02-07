@@ -9,6 +9,7 @@
     #flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager";
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins.url = "github:hyprwm/Hyprland-plugins";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
     nur.url = "github:nix-community/NUR";
@@ -18,6 +19,7 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland-plugins.inputs.hyprland.follows = "hyprland";
     #pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
     #pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
   };
