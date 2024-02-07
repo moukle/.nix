@@ -1,0 +1,29 @@
+#{
+#  homeImports,
+#  inputs,
+#  self,
+#  theme,
+#  ...
+#}: let
+#  inherit (inputs.nixpkgs.lib) nixosSystem;
+#  specialArgs = {inherit inputs self theme;};
+#in {
+#  flake.nixosConfigurations = {
+#    mori = nixosSystem {
+#      inherit specialArgs;
+#      modules = [
+#        ./configuration.nix
+#        ./hardware-configuration.nix
+#        ./home.nix
+#
+#        #{
+#        #  home-manager = {
+#        #    users.rxyhn.imports = homeImports."rxyhn@hyprland";
+#        #    extraSpecialArgs = specialArgs;
+#        #  };
+#        #}
+#
+#      ];
+#    };
+#  };
+#}
