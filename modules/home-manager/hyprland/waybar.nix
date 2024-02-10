@@ -299,7 +299,7 @@ in {
 
       window#waybar {
         background: ${x colors.surface0};
-        color: ${x colors.text};
+        color: ${x colors.subtext1};
       }
 
       .modules-left {
@@ -326,6 +326,13 @@ in {
         border-radius: 1.5rem;
         min-width: 0.75rem;
         margin: 0.25rem 0.5rem;
+      }
+
+      #network,
+      #pulseaudio,
+      #battery,
+      #backlight {
+        color: ${x colors.subtext0};
       }
 
       #tray,
@@ -366,7 +373,7 @@ in {
       }
 
       #workspaces button {
-        color: ${x colors.base};
+        color: ${x colors.overlay0};
         border-radius: 1rem;
         margin-bottom: 0.75rem;
         transition: all 0.5s steps(12);
@@ -389,7 +396,8 @@ in {
       }
 
       #workspaces button.urgent {
-        color: ${x colors.red};
+        color: ${x colors.base};
+        background: ${x colors.red};
       }
 
       #workspaces button.urgent:hover {
@@ -405,7 +413,7 @@ in {
       }
 
       #workspaces button.active {
-        color: ${x colors.blue};
+        color: ${x colors.maroon};
       }
 
       #workspaces button.active:hover {

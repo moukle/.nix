@@ -9,6 +9,7 @@ in {
   imports = [ 
     ./options.nix 
     ./binds.nix 
+    ./rules.nix 
     # ./plugins.nix 
   ];
 

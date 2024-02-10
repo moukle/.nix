@@ -68,12 +68,22 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    teams-for-linux
+    # system guis
     pavucontrol
-    ripgrep
-    firefox
-    python3
     networkmanagerapplet
+
+    # apps
+    firefox
+    teams-for-linux
+    discord
+
+    # games
+    ddnet
+
+    # cli
+    python3
+    ripgrep
+    yazi
   ];
 
 
