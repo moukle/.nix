@@ -23,7 +23,7 @@ in {
         margin-bottom = 0;
         margin-left = 0;
         margin-right = 0;
-        modules-left = ["custom/logo" "hyprland/workspaces"];
+        modules-left = ["hyprland/workspaces"];
         modules-center = ["clock"];
         modules-right = ["tray" "custom/notification" "group/network-pulseaudio-backlight-battery" "group/powermenu"];
 
@@ -40,9 +40,21 @@ in {
           all-outputs = true;
           disable-scroll = true;
           on-click = "activate";
-          format = "";
+          format = "{icon}";
           persistent-workspaces = {
             "*" = 5;
+          };
+          format-icons = {
+            "1" = "●";
+            "2" = "●";
+            "3" = "●";
+            "4" = "●";
+            "5" = "●";
+            "6" = "6";
+            "7" = "7";
+            "8" = "8";
+            "9" = "9";
+            "10" = "0";
           };
         };
 
@@ -286,7 +298,7 @@ in {
       }
 
       window#waybar {
-        background: ${x colors.base};
+        background: ${x colors.surface0};
         color: ${x colors.text};
       }
 
@@ -309,7 +321,7 @@ in {
       #custom-suspend,
       #custom-reboot,
       #custom-power {
-        background: ${x colors.surface0};
+        background: ${x colors.surface1};
         border: 1px solid ${x colors.surface1};
         border-radius: 1.5rem;
         min-width: 0.75rem;
@@ -354,7 +366,7 @@ in {
       }
 
       #workspaces button {
-        background: ${x colors.base};
+        color: ${x colors.base};
         border-radius: 1rem;
         margin-bottom: 0.75rem;
         transition: all 0.5s steps(12);
@@ -365,39 +377,39 @@ in {
       }
 
       #workspaces button:hover {
-        background: alpha(${x colors.surface0}, 0.5);
+        color: alpha(${x colors.surface0}, 0.5);
       }
 
       #workspaces button.empty {
-        background: ${x colors.surface1};
+        color: ${x colors.surface1};
       }
 
       #workspaces button.empty:hover {
-        background: alpha(${x colors.surface1}, 0.5);
+        color: alpha(${x colors.surface1}, 0.5);
       }
 
       #workspaces button.urgent {
-        background: ${x colors.red};
+        color: ${x colors.red};
       }
 
       #workspaces button.urgent:hover {
-        background: alpha(${x colors.red}, 0.5);
+        color: alpha(${x colors.red}, 0.5);
       }
 
       #workspaces button.special {
-        background: ${x colors.yellow};
+        color: ${x colors.yellow};
       }
 
       #workspaces button.special:hover {
-        background: alpha(${x colors.yellow}, 0.5);
+        color: alpha(${x colors.yellow}, 0.5);
       }
 
       #workspaces button.active {
-        background: ${x colors.blue};
+        color: ${x colors.blue};
       }
 
       #workspaces button.active:hover {
-        background: alpha(${x colors.blue}, 0.5);
+        color: alpha(${x colors.blue}, 0.5);
       }
 
       #tray > .passive {

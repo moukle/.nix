@@ -1,5 +1,5 @@
 {
-  fonts = rec {
+  fonts = {
     mono =  "FiraCode Nerd Font";
     sans =  "DejaVu Sans";
   };
@@ -8,35 +8,35 @@
   x = c: "#${c}";
 
   colors = rec {
-    rosewater = "f2d5cf";
-    flamingo = "eebebe";
-    pink = "f4b8e4";
-    mauve = "ca9ee6";
-    red = "e78284";
-    maroon = "ea999c";
-    peach = "ef9f76";
-    yellow = "e5c890";
-    green = "a6d189";
-    teal = "81c8be";
-    sky = "99d1db";
-    sapphire = "85c1dc";
-    blue = "8caaee";
-    lavender = "babbf1";
-    text = "c6d0f5";
-    subtext1 = "b5bfe2";
-    subtext0 = "a5adce";
-    overlay2 = "949cbb";
-    overlay1 = "838ba7";
-    overlay0 = "737994";
-    surface2 = "626880";
-    surface1 = "51576d";
-    surface0 = "414559";
-    base = "303446";
-    mantle = "292c3c";
-    crust = "232634";
+    rosewater = "a57562";
+    flamingo = "a57562";
+    pink = "b48ead";
+    mauve = "b48ead";
+    red = "bf616a";
+    maroon = "bf616a";
+    peach = "d08770";
+    yellow = "ebcb8b";
+    green = "a3be8c";
+    teal = "8fbcbb";
+    sky = "88c0d0";
+    sapphire = "88c0d0";
+    blue = "5e81ac";
+    lavender = "81a1c1";
+    text = "a3a5aa";
+    subtext1 = "878991";
+    subtext0 = "6e7177";
+    overlay2 = "5c5c5c";
+    overlay1 = "525252";
+    overlay0 = "474747";
+    surface2 = "3d3d3d";
+    surface1 = "333333";
+    surface0 = "282828";
+    base = "232323";
+    mantle = "1e1e1e";
+    crust = "191919";
 
     accent = pink;
   };
 
-  wallpaper = ./wall.jpg;
+  wallpaper = ./clearing.jpg;
 } 
