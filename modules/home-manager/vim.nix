@@ -31,11 +31,14 @@ in {
           L = "$";
           H = "^";
 
-          "<leader>gg" = "<cmd>Neogit<CR>";
           "<leader>ff" = "<cmd>Telescope find_files<CR>";
           "<leader>fr" = "<cmd>Telescope oldfiles<CR>";
           "<leader>fg" = "<cmd>Telescope live_grep<CR>";
+          
+          "<leader>pp" = "<cmd>Telescope projects<CR>";
           "<leader>bb" = "<cmd>Telescope buffers<CR>";
+
+          "<leader>gg" = "<cmd>Neogit<CR>";
         };
     in
     config.nixvim.helpers.keymaps.mkKeymaps

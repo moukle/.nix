@@ -4,21 +4,24 @@
   programs.fish = {
     enable = true;
     plugins = [
-      { name = "z"; src = pkgs.fishPlugins.z.src; }
       { name = "sponge"; src = pkgs.fishPlugins.sponge.src; }
       { name = "done"; src = pkgs.fishPlugins.done.src; }
       { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
+      { name = "forgit"; src = pkgs.fishPlugins.forgit.src; }
+      { name = "colored-man-pages"; src = pkgs.fishPlugins.colored-man-pages.src; }
       { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
     ];
 
     interactiveShellInit = ''
 	set fish_greeting
         fish_vi_key_bindings
+
+        zoxide init fish | source
         starship init fish | source
     '';
 
     shellAliases = {
-      ls = "eza --icons auto";
+      ls = "eza --icons auto --group-directories-first";
 
       nrt = "sudo nixos-rebuild test --flake ~/dotfiles#default";
       nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#default";
