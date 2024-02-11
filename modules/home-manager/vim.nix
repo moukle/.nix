@@ -4,9 +4,15 @@ in {
   imports = [ inputs.nixvim.homeManagerModules.nixvim ];
   programs.nixvim = {
     enable = true;
+    defaultEditor = true;
+
+    viAlias = true;
+    vimAlias = true;
+
 
     globals.mapleader = " ";
     globals.maplocalleader = " ";
+
     globals.clipboard.register = "unnamedplus";
     globals.clipboard.providers.wl-copy.enable = true;
 
@@ -92,7 +98,7 @@ in {
           "<C-d>" = "cmp.mapping.scroll_docs(-4)";
           "<C-f>" = "cmp.mapping.scroll_docs(4)";
           "<C-Space>" = "cmp.mapping.complete()";
-          "<Esc>" = "cmp.mapping.close()";
+          "<C-e>" = "cmp.mapping.close()";
 
           "<C-j>" = {
             modes = ["i" "s"];
@@ -130,24 +136,37 @@ in {
       ];
     };
 
-    plugins.lualine.enable = true;
-    plugins.indent-blankline.enable = true;
-    plugins.telescope.enable = true;
-    plugins.project-nvim.enable = true;
-    plugins.nix.enable = true;
-    plugins.nvim-colorizer.enable = true;
-    plugins.neogit.enable = true;
-    plugins.copilot-vim.enable = true;
-    plugins.which-key.enable = true;
-    plugins.treesitter.enable = true;
-    plugins.nvim-autopairs.enable = true;
-    plugins.comment-nvim.enable = true;
+    plugins = {
+      lualine.enable = true;
+      indent-blankline.enable = true;
+      which-key.enable = true;
+      nvim-colorizer.enable = true;
 
-    plugins.lsp = {
-      enable = true;
-      servers = {
-        nil_ls.enable = true;
+      project-nvim.enable = true;
+      telescope.enable = true;
+      telescope.extensions.project-nvim.enable = true;
+      neogit.enable = true;
+
+      nix.enable = true;
+
+      treesitter.enable = true;
+      copilot-vim.enable = true;
+
+      nvim-autopairs.enable = true;
+      comment-nvim.enable = true;
+
+      lsp = {
+        enable = true;
+        servers = {
+          nil_ls.enable = true;
+        };
       };
     };
+
+    # plugins.telescope = {
+    #   defaults = {
+    #     generic_sorter = "require("telescope.sorters").get_generic_fuzzy_sorter";
+    #   };
+    # };
   };
 }

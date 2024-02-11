@@ -94,6 +94,8 @@
     fzf
     yazi
     eza
+
+    wl-clipboard
   ];
 
 
