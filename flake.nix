@@ -6,7 +6,7 @@
   inputs = {
     # flake-parts.url = "github:hercules-ci/flake-parts";
     # flake-utils.url = "github:numtide/flake-utils";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nur.url = "github:nix-community/NUR";
     # pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     anyrun.url = "github:Kirottu/anyrun";

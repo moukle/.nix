@@ -67,6 +67,14 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Add unstable channel
+  # nixpkgs.config.packageOverrides = pkgs: {
+  #   unstable = import (fetchTarball {
+  #     url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+  #     sha256 = "";
+  #   });
+  # };
+
   environment.systemPackages = with pkgs; [
     # system guis
     pavucontrol
@@ -83,7 +91,9 @@
     # cli
     python3
     ripgrep
+    fzf
     yazi
+    eza
   ];
 
 

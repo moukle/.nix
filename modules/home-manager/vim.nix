@@ -31,10 +31,10 @@ in {
           "<leader>fg" = "<cmd>Telescope live_grep<CR>";
           "<leader>bb" = "<cmd>Telescope buffers<CR>";
         };
-      in
-        config.nixvim.helpers.keymaps.mkKeymaps
-        {options.silent = true;}
-        (normal);
+    in
+    config.nixvim.helpers.keymaps.mkKeymaps
+    {options.silent = true;}
+    (normal);
 
     options = {
       number = true;
@@ -81,7 +81,53 @@ in {
         mantle = x mantle;
         crust = x crust;
       };
+    };
 
+    # complete
+    options.completeopt = ["menu" "menuone" "noselect"];
+    plugins.nvim-cmp = {
+      enable = true;
+
+        mapping = {
+          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+          "<C-f>" = "cmp.mapping.scroll_docs(4)";
+          "<C-Space>" = "cmp.mapping.complete()";
+          "<Esc>" = "cmp.mapping.close()";
+
+          "<C-j>" = {
+            modes = ["i" "s"];
+            action = "cmp.mapping.select_next_item()";
+          };
+          "<Tab>" = {
+            modes = ["i" "s"];
+            action = "cmp.mapping.select_next_item()";
+          };
+
+          "<C-k>" = {
+            modes = ["i" "s"];
+            action = "cmp.mapping.select_prev_item()";
+          };
+          "<S-Tab>" = {
+            modes = ["i" "s"];
+            action = "cmp.mapping.select_prev_item()";
+          };
+
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<C-l>" = "cmp.mapping.confirm({ select = true })";
+        };
+
+      sources = [
+        {name = "path";}
+        {name = "nvim_lsp";}
+        # {name = "cmp_tabby";}
+        # {name = "luasnip";}
+        {
+          name = "buffer";
+            # Words from other open buffers can also be suggested.
+            option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
+        }
+        {name = "neorg";}
+      ];
     };
 
     plugins.lualine.enable = true;
@@ -94,7 +140,7 @@ in {
     plugins.copilot-vim.enable = true;
     plugins.which-key.enable = true;
     plugins.treesitter.enable = true;
-    plugins.nvim-cmp.enable = true;
+    plugins.nvim-autopairs.enable = true;
     plugins.comment-nvim.enable = true;
 
     plugins.lsp = {

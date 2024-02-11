@@ -9,6 +9,9 @@ in {
 	font_family = theme.fonts.mono;
         font_size = 12;
 
+        confirm_os_window_close = 0;
+        copy_on_select = true;
+
         allow_remote_control = true;
         window_padding_width = 5;
 
