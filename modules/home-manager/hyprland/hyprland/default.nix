@@ -15,6 +15,7 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
+    # nvidiaPatches = true;
     xwayland.enable = true;
 
     systemd = {

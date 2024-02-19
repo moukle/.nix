@@ -44,9 +44,9 @@
     };
 
     input = {
-      kb_layout = "de";
+      kb_layout = "us";
       kb_options = "ctrl:nocaps";
-      kb_variant = "nodeadkeys";
+      # kb_variant = "nodeadkeys";
 
       accel_profile = "flat";
       follow_mouse = 1;
@@ -72,6 +72,9 @@
       force_default_wallpaper = 1;
     };
 
-    monitor = [ "eDP-1, highres, auto, 1" ];
+    monitor = [
+      "DP-1, highres, 1920x0, 1" 
+      "DP-2, highrr, 0x0, 1" 
+    ];
   };
 }

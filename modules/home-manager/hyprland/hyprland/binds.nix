@@ -40,6 +40,11 @@ in {
     ] ++ workspaces;
 
     bindr = [ ]; 
+
+    bindm = [
+      "${mod},mouse:272,movewindow"
+      "${mod},mouse:273,resizewindow"
+    ];
   };
 }
 

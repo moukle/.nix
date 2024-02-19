@@ -1,6 +1,7 @@
 {
   fonts = {
-    mono =  "FiraCode Nerd Font";
+    # mono =  "FiraCode Nerd Font";
+    mono =  "CommitMono";
     sans =  "DejaVu Sans";
   };
 

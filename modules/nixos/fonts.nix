@@ -8,6 +8,7 @@
       comic-neue
       source-sans
       inter
+      commit-mono
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
   };

@@ -18,7 +18,7 @@ in {
         applications
         rink
         shell
-        symbols
+        # symbols
         translate
         randr
       ];

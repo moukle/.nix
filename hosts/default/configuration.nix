@@ -9,57 +9,99 @@
       ../../modules/nixos/fonts.nix
     ];
 
-  # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;
+    services.xserver.videoDrivers = ["nvidia"];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    hardware = {
+      nvidia = {
+        modesetting.enable = true;
+        package = config.boot.kernelPackages.nvidiaPackages.stable;
+        open = false;
+        powerManagement.enable = false;
+        nvidiaSettings = true;
+      };
 
-  time.timeZone = "Europe/Berlin";
-
-  i18n.defaultLocale = "en_GB.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "nodeadkeys";
-  };
-
-  # Configure console keymap
-  console.keyMap = "de-latin1-nodeadkeys";
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.mori = {
-    isNormalUser = true;
-    description = "Mori";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
-    packages = with pkgs; [];
-  };
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users.mori = {
-      imports = [./home.nix];
-      _module.args.theme = import ../../theme;
+      opengl = {
+        enable = true;
+        driSupport = true;
+        driSupport32Bit = true;
+        # extraPackages = [pkgs.nvidia-vaapi.driver];
+      };
+      # opengl.driSupport = true;
+      # opengl.driSupport32Bit = true;
     };
-  };
+
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      BROWSER = "firefox";
+
+      WLR_NO_HARDWARE_CURSORS = "1";
+    };
+
+    # Bootloader.
+    boot.loader.grub.enable = true;
+    # boot.loader.grub.device = "/dev/sda";
+    boot.loader.grub.efiSupport = true;
+    boot.loader.grub.devices = [ "nodev" ];
+    boot.loader.grub.useOSProber = true;
+
+    # boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader.efi.efiSysMountPoint = "/boot";
+
+    nix.gc = {
+      automatic = true;
+      options = "--delete-older-than 8d";
+    };
+
+    networking.hostName = "nixos"; # Define your hostname.
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networking.networkmanager.enable = true;
+
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+    time.timeZone = "Europe/Berlin";
+
+    i18n.defaultLocale = "en_GB.UTF-8";
+
+    i18n.extraLocaleSettings = {
+      LC_ADDRESS = "de_DE.UTF-8";
+      LC_IDENTIFICATION = "de_DE.UTF-8";
+      LC_MEASUREMENT = "de_DE.UTF-8";
+      LC_MONETARY = "de_DE.UTF-8";
+      LC_NAME = "de_DE.UTF-8";
+      LC_NUMERIC = "de_DE.UTF-8";
+      LC_PAPER = "de_DE.UTF-8";
+      LC_TELEPHONE = "de_DE.UTF-8";
+      LC_TIME = "de_DE.UTF-8";
+    };
+
+    # Configure keymap in X11
+    services.xserver.xkb = {
+      layout = "us";
+      variant = "nodeadkeys";
+    };
+
+    # Configure console keymap
+    # console.keyMap = "de-latin1-nodeadkeys";
+    console.keyMap = "us";
+
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    users.users.mori = {
+      isNormalUser = true;
+      description = "Mori";
+      extraGroups = [ "networkmanager" "wheel" ];
+      shell = pkgs.fish;
+      packages = with pkgs; [];
+    };
+
+    home-manager = {
+      extraSpecialArgs = { inherit inputs; };
+      users.mori = {
+        imports = [./home.nix];
+        _module.args.theme = import ../../theme;
+      };
+    };
 
   # Enable automatic login for the user.
   services.getty.autologinUser = "mori";
@@ -87,6 +129,9 @@
 
     # games
     ddnet
+    vulkan-headers
+    vulkan-tools
+    steam
 
     # cli
     python3
@@ -100,10 +145,6 @@
   ];
 
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    BROWSER = "firefox";
-  };
 
   programs.fish.enable = true;
   programs.hyprland.enable = true;
