@@ -1,4 +1,4 @@
-{ theme, inputs, pkgs, config, lib, ... }:
+{ theme, inputs, config, lib, ... }:
 let inherit (theme) x;
 in {
   imports = [ inputs.nixvim.homeManagerModules.nixvim ];
@@ -8,7 +8,6 @@ in {
 
     viAlias = true;
     vimAlias = true;
-
 
     globals.mapleader = " ";
     globals.maplocalleader = " ";
@@ -34,7 +33,7 @@ in {
           "<leader>ff" = "<cmd>Telescope find_files<CR>";
           "<leader>fr" = "<cmd>Telescope oldfiles<CR>";
           "<leader>fg" = "<cmd>Telescope live_grep<CR>";
-          
+
           "<leader>pp" = "<cmd>Telescope projects<CR>";
           "<leader>bb" = "<cmd>Telescope buffers<CR>";
 
@@ -48,7 +47,20 @@ in {
     options = {
       number = true;
       relativenumber = true;
-      shiftwidth = 2;
+
+      shiftwidth = 4;
+      tabstop = 4;
+      softtabstop = 4;
+      smartindent = true;
+      expandtab = true;
+
+      list = true;
+      listchars = "tab:⇥ ,trail:░";
+
+      showmatch = true;
+
+      splitbelow = true;
+      splitright = true;
 
       updatetime = 100;
       swapfile = false;
@@ -96,68 +108,97 @@ in {
     options.completeopt = ["menu" "menuone" "noselect"];
     plugins.nvim-cmp = {
       enable = true;
+      autoEnableSources = true;
+      experimental.ghost_text = true;
 
-        mapping = {
-          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-e>" = "cmp.mapping.close()";
+      mapping = {
+        "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+        "<C-f>" = "cmp.mapping.scroll_docs(4)";
+        "<C-Space>" = "cmp.mapping.complete()";
+        "<C-e>" = "cmp.mapping.close()";
 
-          "<C-j>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_next_item()";
-          };
-          "<Tab>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_next_item()";
-          };
-
-          "<C-k>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_prev_item()";
-          };
-          "<S-Tab>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_prev_item()";
-          };
-
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
-          "<C-l>" = "cmp.mapping.confirm({ select = true })";
+        "<C-j>" = {
+          modes = ["i" "s"];
+          action = "cmp.mapping.select_next_item()";
         };
+        "<Tab>" = {
+          modes = ["i" "s"];
+          action = "cmp.mapping.select_next_item()";
+        };
+
+        "<C-k>" = {
+          modes = ["i" "s"];
+          action = "cmp.mapping.select_prev_item()";
+        };
+        "<S-Tab>" = {
+          modes = ["i" "s"];
+          action = "cmp.mapping.select_prev_item()";
+        };
+
+        "<CR>" = "cmp.mapping.confirm({ select = true })";
+        "<C-l>" = "cmp.mapping.confirm({ select = true })";
+      };
 
       sources = [
         {name = "path";}
         {name = "nvim_lsp";}
-        # {name = "cmp_tabby";}
-        # {name = "luasnip";}
+        # {name = "copilot";}
         {
           name = "buffer";
             # Words from other open buffers can also be suggested.
             option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
-        }
-        {name = "neorg";}
-      ];
-    };
+            keywordLength = 3;
+          }
+        ];
+      };
 
-    plugins = {
-      lualine.enable = true;
-      indent-blankline.enable = true;
-      which-key.enable = true;
-      nvim-colorizer.enable = true;
+      plugins = {
+        lualine.enable = true;
+        indent-blankline.enable = true;
+        indent-blankline.scope.enabled = false;
+        which-key.enable = true;
 
-      project-nvim.enable = true;
-      telescope.enable = true;
-      telescope.extensions.project-nvim.enable = true;
-      neogit.enable = true;
+        nvim-colorizer = {
+          enable = true;
+          userDefaultOptions = {
+            RRGGBB = true;
+            RGB = true;
+            names = false;
+          };
+        };
 
-      nix.enable = true;
+        project-nvim.enable = true;
+        telescope.enable = true;
+        telescope.extensions.project-nvim.enable = true;
 
-      treesitter.enable = true;
-      copilot-vim.enable = true;
+        neogit = {
+          enable = true;
+          disableHint = true;
+        };
 
-      nvim-autopairs.enable = true;
-      comment-nvim.enable = true;
+        nix.enable = true;
 
+        treesitter.enable = true;
+        copilot-vim.enable = true;
+
+        nvim-autopairs.enable = true;
+        comment-nvim.enable = true;
+
+        conform-nvim = {
+          enable = true;
+          formattersByFt = {
+            nix = ["alejandra"];
+          };
+        };
+
+        cmp-nvim-lsp.enable = true;
+        cmp-buffer.enable = true;
+      # copilot-cmp.enable = true;
+      cmp-path.enable = true;
+      cmp-cmdline.enable = true;
+
+      lspkind.enable = true;
+      lspkind.mode = "symbol";
       lsp = {
         enable = true;
         servers = {

@@ -140,6 +140,7 @@
     yazi
     eza
     zoxide
+    gh
 
     wl-clipboard
   ];
