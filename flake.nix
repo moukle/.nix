@@ -15,6 +15,7 @@
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
     hyprland.url = "github:hyprwm/Hyprland";
     nixvim.url = "github:nix-community/nixvim";
+    nix-gc-env.url = "github:Julow/nix-gc-env";
 
     # flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     # pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
@@ -26,12 +27,11 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: 
+  outputs = { self, nixpkgs, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [

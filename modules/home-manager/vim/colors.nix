@@ -5,7 +5,17 @@ in {
     colorschemes.catppuccin = {
       enable = true;
       flavour = "frappe";
-      integrations.indent_blankline.enabled = true;
+      integrations = {
+        indent_blankline.enabled = true;
+        telescope.enabled = true;
+
+        cmp = true;
+        hop = true;
+        neogit = true;
+        notify = true;
+        nvimtree = true;
+        which_key = true;
+      };
 
       colorOverrides.frappe = with theme.colors; {
         rosewater = x rosewater;

@@ -1,7 +1,7 @@
 {
   theme,
   ...
-}: 
+}:
 {
   wayland.windowManager.hyprland.settings = with theme.colors; {
     general = {
@@ -65,7 +65,7 @@
 
     misc = {
       animate_mouse_windowdragging = false;
-      #disable_autoreload = true;
+      disable_autoreload = true;
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
       focus_on_activate = true;
@@ -73,8 +73,8 @@
     };
 
     monitor = [
-      "DP-1, highres, 1920x0, 1" 
-      "DP-2, highrr, 0x0, 1" 
+      "DP-1, highres, 1920x0, 1"
+      "DP-2, highrr, 0x0, 1"
     ];
   };
 }

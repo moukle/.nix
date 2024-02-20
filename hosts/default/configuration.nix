@@ -3,8 +3,10 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+      inputs.nix-gc-env.nixosModules.default
+
+      ./hardware-configuration.nix
 
       ../../modules/nixos/fonts.nix
     ];
@@ -51,7 +53,8 @@
 
     nix.gc = {
       automatic = true;
-      options = "--delete-older-than 8d";
+      dates = "weekly";
+      delete_generations = "+5";
     };
 
     networking.hostName = "nixos"; # Define your hostname.
@@ -172,6 +175,7 @@
     }
     '';
   };
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

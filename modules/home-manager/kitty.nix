@@ -40,6 +40,7 @@ in {
 
     extraConfig = ''
       modify_font cell_height 120%
+      listen_on unix:/tmp/mykitty
     '';
 
   };

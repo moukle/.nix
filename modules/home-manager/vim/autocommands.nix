@@ -29,5 +29,16 @@
       ];
       command = "setlocal spell spelllang=en,fr";
     }
+
+    # Kitty Padding
+    {
+      event = "VimLeave";
+      command = "silent !kitty @ set-spacing padding=default";
+    }
+
+    {
+      event = "VimEnter";
+      command = "silent !kitty @ set-spacing padding=0";
+    }
   ];
 }
