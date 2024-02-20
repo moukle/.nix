@@ -6,8 +6,8 @@
     ../../modules/home-manager/swaync.nix
     ../../modules/home-manager/kitty.nix
 
+    ../../modules/home-manager/vim
     ../../modules/home-manager/fish.nix
-    ../../modules/home-manager/vim.nix
     ../../modules/home-manager/git.nix
   ];
 

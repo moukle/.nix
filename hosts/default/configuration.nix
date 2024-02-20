@@ -141,6 +141,7 @@
     eza
     zoxide
     gh
+    alejandra
 
     wl-clipboard
   ];
