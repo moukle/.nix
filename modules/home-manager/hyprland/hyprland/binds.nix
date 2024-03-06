@@ -33,13 +33,22 @@ in {
       "${mod} SHIFT, J, movewindow, d"
 
       "${mod}, F, fullscreen"
+      "${mod}, S, togglefloating"
+
+      "${mod}, x, togglespecialworkspace"
+      "${mod} SHIFT, x, movetoworkspace, special"
+
+      # ags
+      "CTRL SHIFT, R, exec, ags -q; ags"
+      "${mod}, TAB, exec,   ags -t overview"
+      "${mod}, P, exec,     ags -r 'recorder.screenshot()'"
 
       # progs
       "${mod}, RETURN, exec, kitty"
       "${mod}, D, exec, pkill .anyrun-wrapped || anyrun"
     ] ++ workspaces;
 
-    bindr = [ ]; 
+    bindr = [ ];
 
     bindm = [
       "${mod},mouse:272,movewindow"

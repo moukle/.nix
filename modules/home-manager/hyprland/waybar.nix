@@ -388,11 +388,11 @@ in {
       }
 
       #workspaces button.empty {
-        color: ${x colors.surface1};
+        color: ${x colors.surface0};
       }
 
       #workspaces button.empty:hover {
-        color: alpha(${x colors.surface1}, 0.5);
+        color: alpha(${x colors.surface0}, 0.5);
       }
 
       #workspaces button.urgent {

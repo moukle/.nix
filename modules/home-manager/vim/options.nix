@@ -9,6 +9,8 @@
       number = true;
       relativenumber = true;
 
+      cursorline = true;
+
       shiftwidth = 4;
       tabstop = 4;
       softtabstop = 4;

@@ -9,15 +9,16 @@
       ./hardware-configuration.nix
 
       ../../modules/nixos/fonts.nix
+      # ../../modules/nixos/gnome.nix
     ];
-
 
     services.xserver.videoDrivers = ["nvidia"];
 
     hardware = {
       nvidia = {
         modesetting.enable = true;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+        # package = config.boot.kernelPackages.nvidiaPackages.stable;
+        package = config.boot.kernelPackages.nvidiaPackages.production;
         open = false;
         powerManagement.enable = false;
         nvidiaSettings = true;
@@ -82,7 +83,7 @@
     # Configure keymap in X11
     services.xserver.xkb = {
       layout = "us";
-      variant = "nodeadkeys";
+      # variant = "nodeadkeys";
     };
 
     # Configure console keymap
@@ -93,7 +94,7 @@
     users.users.mori = {
       isNormalUser = true;
       description = "Mori";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "adbusers" ];
       shell = pkgs.fish;
       packages = with pkgs; [];
     };
@@ -129,11 +130,13 @@
     firefox
     teams-for-linux
     discord
+    spotify
+    vscode
 
     # games
     ddnet
-    vulkan-headers
-    vulkan-tools
+    # vulkan-headers
+    # vulkan-tools
     steam
 
     # cli
@@ -145,16 +148,41 @@
     zoxide
     gh
     alejandra
+    tmux
 
     wl-clipboard
+
+    power-profiles-daemon
+    gnome.nautilus
+    glib
+    bun
+    bash
+    coreutils
+    dart-sass
+    gawk
+    imagemagick
+    procps
+    ripgrep
+    util-linux
+    gvfs
+    gnome.gvfs
+    brightnessctl
+    # gnome2
   ];
 
-
+  services.power-profiles-daemon.enable = true;
+  services.gvfs.enable = true;
 
   programs.fish.enable = true;
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
+  # programs.hyprland.enable = true;
+  # programs.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+
+  # android
+  programs.adb.enable = true;
+
+  # audio
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -163,18 +191,18 @@
     pulse.enable = true;
   };
 
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-  environment.etc = {
-    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
-    bluez_monitor.properties = {
-      ["bluez5.enable-sbc-xq"] = true,
-      ["bluez5.enable-msbc"] = true,
-      ["bluez5.enable-hw-volume"] = true,
-      ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-    }
-    '';
-  };
+  # hardware.bluetooth.enable = true;
+  # services.blueman.enable = true;
+  # environment.etc = {
+  #   "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
+  #   bluez_monitor.properties = {
+  #     ["bluez5.enable-sbc-xq"] = true,
+  #     ["bluez5.enable-msbc"] = true,
+  #     ["bluez5.enable-hw-volume"] = true,
+  #     ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+  #   }
+  #   '';
+  # };
 
 
   # Some programs need SUID wrappers, can be configured further or are

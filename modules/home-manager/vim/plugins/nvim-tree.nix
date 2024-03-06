@@ -1,6 +1,7 @@
 {
   programs.nixvim.plugins.nvim-tree = {
     enable = true;
+    autoClose = true;
     git.enable = false;
     updateFocusedFile.enable = true;
     updateFocusedFile.updateRoot = true;

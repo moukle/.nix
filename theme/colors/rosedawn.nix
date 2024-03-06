@@ -1,12 +1,4 @@
 {
-  fonts = {
-    mono =  "FiraCode Nerd Font";
-    sans =  "DejaVu Sans";
-  };
-
-  # convert rrggbb hex to #rrggbb
-  x = c: "#${c}";
-
   colors = rec {
     rosewater = "d6817d";
     flamingo = "d6817d";
@@ -37,6 +29,4 @@
 
     accent = pink;
   };
-
-  wallpaper = ./wall.jpg;
-} 
+}

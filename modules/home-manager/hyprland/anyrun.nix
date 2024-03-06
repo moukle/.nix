@@ -37,6 +37,7 @@ in {
     * {
       all: unset;
       font: 11pt Inter, sans-serif;
+      color: ${x text}
     }
 
       #window,
@@ -48,7 +49,7 @@ in {
       }
 
       #entry {
-        background: ${x surface0};
+        background: ${x base};
         border-radius: 0.5rem;
         margin: 0.5rem;
         padding: 1rem;
@@ -56,7 +57,7 @@ in {
 
       #match.activatable {
         padding: 0.5rem 1rem;
-        background: ${x surface0};
+        background: ${x crust};
       }
 
       #match.activatable:first-child {
@@ -71,11 +72,11 @@ in {
       #match:hover,
       #plugin:hover {
         border-radius: 0.5rem;
-        background: ${x blue};
+        background: ${x surface0};
       }
 
       box#main {
-        background: ${x surface1};
+        background: ${x mantle};
         border-radius: 0.5rem;
         padding: 0.5rem;
       }

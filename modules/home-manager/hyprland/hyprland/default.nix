@@ -1,4 +1,4 @@
-{ pkgs, theme, lib, ... }:
+{ pkgs, theme, inputs, lib, ... }:
 with lib; let
   mkService = lib.recursiveUpdate {
     Unit.PartOf = [ "graphical-session.target" ];
@@ -6,16 +6,16 @@ with lib; let
     Install.WantedBy = [ "graphical-session.target" ];
   };
 in {
-  imports = [ 
-    ./options.nix 
-    ./binds.nix 
-    ./rules.nix 
-    # ./plugins.nix 
+  imports = [
+    ./options.nix
+    ./binds.nix
+    ./rules.nix
+    # ./plugins.nix
   ];
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # nvidiaPatches = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
 
     systemd = {
