@@ -15,42 +15,42 @@
       cmp-path.enable = true;
       cmp-cmdline.enable = true;
 
-      nvim-cmp = {
+      cmp = {
         enable = true;
         autoEnableSources = true;
-        experimental.ghost_text = true;
 
-        mapping = {
-          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-e>" = "cmp.mapping.close()";
+        settings = {
+          mapping = {
+            "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-f>" = "cmp.mapping.scroll_docs(4)";
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-e>" = "cmp.mapping.close()";
 
-          "<C-j>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_next_item()";
+            # "<C-j>" = {
+            #   modes = ["i" "s"];
+            #   action = "cmp.mapping.select_next_item()";
+            # };
+            # "<Tab>" = {
+            #   modes = ["i" "s"];
+            #   action = "cmp.mapping.select_next_item()";
+            # };
+            #
+            # "<C-k>" = {
+            #   modes = ["i" "s"];
+            #   action = "cmp.mapping.select_prev_item()";
+            # };
+            # "<S-Tab>" = {
+            #   modes = ["i" "s"];
+            #   action = "cmp.mapping.select_prev_item()";
+            # };
+
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<C-l>" = "cmp.mapping.confirm({ select = true })";
           };
-          "<Tab>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_next_item()";
-          };
 
-          "<C-k>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_prev_item()";
-          };
-          "<S-Tab>" = {
-            modes = ["i" "s"];
-            action = "cmp.mapping.select_prev_item()";
-          };
-
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
-          "<C-l>" = "cmp.mapping.confirm({ select = true })";
-        };
-
-        sources = [
-          {name = "path";}
-          {name = "nvim_lsp";}
+          sources = [
+            {name = "path";}
+            {name = "nvim_lsp";}
         # {name = "copilot";}
         {
           name = "buffer";
@@ -62,4 +62,5 @@
       };
     };
   };
+};
 }

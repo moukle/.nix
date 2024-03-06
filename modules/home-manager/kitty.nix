@@ -41,6 +41,8 @@ in {
     extraConfig = ''
       modify_font cell_height 120%
       listen_on unix:/tmp/mykitty
+      font_features CommitMono-Regular +ss01 +ss02 +ss03 +ss04 +ss05
+      font_features CommitMono-Bold    +ss01 +ss02 +ss03 +ss04 +ss05
     '';
 
   };

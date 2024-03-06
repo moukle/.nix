@@ -17,11 +17,7 @@
     matugen.url = "github:InioX/matugen";
 
 
-    # flake-parts.url = "github:hercules-ci/flake-parts";
-    # flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nur.url = "github:nix-community/NUR";
-    # pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     anyrun.url = "github:Kirottu/anyrun";
     home-manager.url = "github:nix-community/home-manager";
 
@@ -29,18 +25,14 @@
     hyprland-contrib.url = "github:hyprwm/contrib";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
 
+    firefox-gnome-theme = {
+      url = "github:rafaelmardojai/firefox-gnome-theme";
+      flake = false;
+    };
+
     nixvim.url = "github:nix-community/nixvim";
     nix-gc-env.url = "github:Julow/nix-gc-env";
 
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      # url = "github:zjeffer/split-monitor-workspaces/fix/zjeffer/hyprlang-breaking-changes"; # TODO use original branch
-      inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
-    };
-
-    # flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
-    # pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
-    # pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 

@@ -2,12 +2,13 @@ let
   # dark
   rosebox    = import ./colors/rosebox.nix;
   catppuccin = import ./colors/catppuccin.nix;
+  adwaita = import ./colors/adwaita.nix;
 
   # light
   rosedawn = import ./colors/rosedawn.nix;
   ayu      = import ./colors/ayu-light.nix;
 
-  theme = catppuccin;
+  theme = adwaita;
 in
 {
   colors = theme.colors;
