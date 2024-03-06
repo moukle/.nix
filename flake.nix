@@ -16,9 +16,10 @@
 
     matugen.url = "github:InioX/matugen";
 
+    anyrun.url = "github:Kirottu/anyrun";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    anyrun.url = "github:Kirottu/anyrun";
+    # nur.url = "github:nix-community/NUR";
     home-manager.url = "github:nix-community/home-manager";
 
     hyprland.url = "github:hyprwm/Hyprland";
@@ -46,9 +47,8 @@
     self,
     nixpkgs,
     home-manager,
-    hyprland,
-    # split-monitor-workspaces,
-    # hyprland-plugins,
+    # nur,
+    # hyprland,
     ...
   }@inputs:
   let
@@ -59,23 +59,7 @@
       specialArgs = {inherit inputs;};
       modules = [
         ./hosts/default/configuration.nix
-
         home-manager.nixosModules.default
-        # home-manager.nixosModules.home-manager
-
-        # {
-        #   home-manager = {
-        #     extraSpecialArgs = { inherit inputs; };
-        #     useGlobalPkgs = true;
-        #     useUserPackages = true;
-        #     users.mori = {
-        #       imports = [./hosts/default/home.nix];
-        #       _module.args.theme = import ./theme;
-        #     };
-        #
-        #   };
-        # }
-
       ];
     };
   };

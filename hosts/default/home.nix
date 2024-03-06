@@ -5,6 +5,7 @@
     ../../modules/home-manager/hyprland
     ../../modules/home-manager/swaync.nix
     ../../modules/home-manager/kitty.nix
+    ../../modules/home-manager/firefox.nix
 
     ../../modules/home-manager/gtk.nix
 

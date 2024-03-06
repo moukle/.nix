@@ -9,7 +9,7 @@
       ./hardware-configuration.nix
 
       ../../modules/nixos/fonts.nix
-      # ../../modules/nixos/gnome.nix
+      ../../modules/nixos/login.nix
     ];
 
     services.xserver.videoDrivers = ["nvidia"];
@@ -36,8 +36,6 @@
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
-      BROWSER = "firefox";
-
       WLR_NO_HARDWARE_CURSORS = "1";
     };
 
@@ -127,7 +125,6 @@
     networkmanagerapplet
 
     # apps
-    firefox
     teams-for-linux
     discord
     spotify

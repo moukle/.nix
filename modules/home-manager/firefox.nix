@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   ...
 }: let
   mimeTypes = [
@@ -31,13 +32,14 @@ in {
 
   programs.firefox = {
     enable = true;
-    profiles.mori = {
-      #extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+    profiles.default = {
+      name = "Default";
+      # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
       #  bitwarden
       #  darkreader
       #  ublock-origin
       #  vimium
-      #];
+      # ];
 
       settings = {
         "browser.tabs.loadInBackground" = true;
